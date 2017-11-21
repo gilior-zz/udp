@@ -15,8 +15,12 @@ namespace WebApi.Template3.Controllers
         [HttpGet]
         public IHttpActionResult Get()
         {
+
+           
             //create a new client
-            var client = UdpUser.ConnectTo("127.0.0.1", 55002);
+            var client = UdpUser.ConnectTo("127.0.0.1", 32123);
+
+            
 
             //wait for reply messages from server and send them to console 
             Task.Factory.StartNew(async () =>
@@ -41,9 +45,9 @@ namespace WebApi.Template3.Controllers
             string read;
             do
             {
-                read = Console.ReadLine();
-                client.Send(read);
-            } while (read != "quit");
+                
+                client.Send("hi there");
+            } while (true);
 
             return Ok(new List<int>() { 1, 2, 3 });
         }

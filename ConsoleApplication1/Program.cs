@@ -18,10 +18,18 @@ namespace ConsoleApplication1
             {
                 while (true)
                 {
-                    var received = await server.Receive();
-                    server.Reply("copy " + received.Message, received.Sender);
-                    if (received.Message == "quit")
-                        break;
+                    try
+                    {
+                        var received = await server.Receive();
+                        server.Reply("copy " + received.Message, received.Sender);
+                        if (received.Message == "quit")
+                            break;
+                    }
+                    catch (Exception ex)
+                    {
+
+                        throw;
+                    }
                 }
             });
         }

@@ -13,7 +13,7 @@ namespace ConsoleApplication1
     {
         private IPEndPoint _listenOn;
 
-        public UdpListener() : this(CreateIPEndPoint("127.0.0.1:55002"))
+        public UdpListener() : this(new IPEndPoint(IPAddress.Any, 32123))
         {
         }
 
